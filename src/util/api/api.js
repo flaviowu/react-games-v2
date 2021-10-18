@@ -6,7 +6,10 @@ export const api = {
 
     readGameByIdUrl: (id) => `${api.baseUrl}/game/${id}`,
 
-    //endpoint ref gerenros
+    // endpoint ref Contas de Usuário
+    readAccountByIdUrl: (id) => `${api.baseUrl}/account/${id}`,
+
+    //endpoint ref generos de jogos
     
     readAllGenresUrl: () => `${api.baseUrl}/genre/`,
 

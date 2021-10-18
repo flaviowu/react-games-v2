@@ -1,10 +1,9 @@
-import React, {useEffect, useState} from 'react';
-import { api } from '../../util/api/api'
-import GameCard from '../GameCard/GameCard';
-import './GameList.css';
+import React, { useEffect, useState } from "react";
+import GameCard from '../../../components/GameCard/GameCard'
+import { api } from "../../../util/api/api"
 
 function GameList() {
-    const [games, setGames] = useState([]);
+  const [games, setGames] = useState([]);
     
     useEffect(() => {
         const loadGamesList = async () => {
@@ -27,4 +26,4 @@ function GameList() {
     )
 }
 
-export default GameList
+export default GameList;

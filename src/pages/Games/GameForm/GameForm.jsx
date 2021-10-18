@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { api } from "../../util/api/api";
+import { api } from "../../../util/api/api";
 
 function AddGame() {
   const [genres, setGenres] = useState([]);

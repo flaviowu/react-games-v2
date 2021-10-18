@@ -15,7 +15,6 @@ function Header() {
 
   return (
     <div className="header">
-      {user}
       <ul className="nav-list">
         <li>
           <Link to="/">Home</Link>
@@ -26,6 +25,12 @@ function Header() {
         </li>
         <li>
           <Link to="/AddGame">AddGame</Link>
+        </li>
+        <li>
+          <Link to="/AccountView">Account</Link>
+        </li>
+        <li>
+          <Link to="/AccountEdit">Account Edit</Link>
         </li>
 
         {user ? (
