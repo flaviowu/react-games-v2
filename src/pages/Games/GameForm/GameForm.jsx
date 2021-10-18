@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { api } from "../../../util/api/api";
 
-function AddGame() {
+function GameForm() {
   const [genres, setGenres] = useState([]);
 
   useEffect(() => {
@@ -14,43 +14,65 @@ function AddGame() {
     loadGenres();
   }, []);
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
+    const title = e.target.title.value;
+    const cover = e.target.cover.value;
+    const year = e.target.year.value;
+    const trailer = e.target.trailer.value;
+    const gameplay = e.target.gameplay.value;
+    const description = e.target.description.value;
+
+    const payload = {
+      title,
+      cover,
+      year,
+      trailer,
+      gameplay,
+      description,
+    };
+
+    const response = await api.buildApiPostRequest(
+      api.createGameUrl(),
+      payload
+    );
+    // const results = await response.json();
+    // console.log(results);
+    
+    return;
   }
 
   return (
-    <div className="addGame">
-      <form name="addGame" onSubmit={handleSubmit}>
-        <div className="input">
-          <div classname="input-section">
-            <label htmlFor="title">Título do Jogo</label>
-            <input type="text" name="title" />
-          </div>
-          <div classname="input-section">
-            <label htmlFor="cover">Capa</label>
-            <input type="text" name="cover" />
-          </div>
-          <div classname="input-section">
-            <label htmlFor="year">Ano de Lançamento:</label>
-            <input type="text" name="year" />
-          </div>
-          <div classname="input-section">
-            <label htmlFor="trailer">Trailer</label>
-            <input type="text" name="trailer" />
-          </div>
-          <div classname="input-section">
-            <label htmlFor="gameplay">Gameplay</label>
-            <input type="text" name="gameplay" />
-          </div>
-          <div classname="input-section">
-            <label htmlFor="description">Descrição</label>
-            <textarea name="description" rows="10" cols="25"></textarea>
-          </div>
+    <div className="GameForm">
+      <form name="GameForm" onSubmit={handleSubmit}>
+        <div className="input-section">
+          <label htmlFor="title">Título do Jogo</label>
+          <input type="text" name="title" />
+        </div>
+        <div className="input-section">
+          <label htmlFor="cover">Capa</label>
+          <input type="text" name="cover" />
+        </div>
+        <div className="input-section">
+          <label htmlFor="year">Ano de Lançamento:</label>
+          <input type="text" name="year" />
+        </div>
+        <div className="input-section">
+          <label htmlFor="trailer">Trailer</label>
+          <input type="text" name="trailer" />
+        </div>
+        <div className="input-section">
+          <label htmlFor="gameplay">Gameplay</label>
+          <input type="text" name="gameplay" />
+        </div>
+        <div className="input-section">
+          <label htmlFor="description">Descrição</label>
+          <textarea name="description" rows="10" cols="25"></textarea>
         </div>
         <div className="addGame-Form-Genres">
           {genres.map((genre) => {
             return (
-              <>
+              <div key={genre.id} className={`genre_${genre.id}`}>
                 <input
                   type="checkbox"
                   id={genre.id}
@@ -58,7 +80,7 @@ function AddGame() {
                   value={genre.id}
                 />
                 <label htmlFor={genre.name}>{genre.name}</label>
-              </>
+              </div>
             );
           })}
         </div>
@@ -69,4 +91,4 @@ function AddGame() {
   );
 }
 
-export default AddGame;
+export default GameForm;
