@@ -6,6 +6,12 @@ export const api = {
 
     readGameByIdUrl: (id) => `${api.baseUrl}/game/${id}`,
 
+    //endpoint ref gerenros
+    
+    readAllGenresUrl: () => `${api.baseUrl}/genre/`,
+
+    // readGenreByIdUrl: (id) => `${api.baseUrl}/game/${id}`,
+
     //GET
     buildApiGetRequest: url => fetch(url, {
         method: "GET",

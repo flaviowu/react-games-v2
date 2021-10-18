@@ -7,6 +7,7 @@ import Home from "./pages/Home/Home";
 import Games from "./pages/Games/Games";
 import { UserContext } from "./context/UserContext";
 import Login from "./pages/Login/login";
+import AddGame from "./pages/AddGame/AddGame";
 
 function App() {
   const [user, setUser] = useState();
@@ -20,6 +21,7 @@ function App() {
         <div className="body">
           <Switch>
             <Route exact path="/" component={Home} />
+            <Route exact path="/AddGame" component={AddGame} />
             <Route exact path="/Games" component={Games} />
             <Route exact path="/Login" component={Login} />
           </Switch>

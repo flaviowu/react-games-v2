@@ -24,6 +24,9 @@ function Header() {
         <li>
           <Link to="/Games">Games</Link>
         </li>
+        <li>
+          <Link to="/AddGame">AddGame</Link>
+        </li>
 
         {user ? (
           <li onClick={handleLogout}>Logout</li>
