@@ -1,14 +1,32 @@
-import './App.css';
-import Header from './components/Header/Header';
-import Footer from './components/Footer/Footer';
+import "./App.css";
+import React, { useState } from "react";
+import { Switch, Route } from "react-router-dom";
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
+import Home from "./pages/Home/Home";
+import Games from "./pages/Games/Games";
+import { UserContext } from "./context/UserContext";
+import Login from "./pages/Login/login";
 
 function App() {
+  const [user, setUser] = useState();
+
   return (
-    <div className="App">
-      <Header />
-      <h2>App Tela Principal</h2>
-      <Footer />
-    </div>
+    <UserContext.Provider value={{ user, setUser }}>
+      <div className="App">
+        <div classname="navbar">
+          <Header />
+        </div>
+        <div className="body">
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/Games" component={Games} />
+            <Route exact path="/Login" component={Login} />
+          </Switch>
+        </div>
+        <Footer />
+      </div>
+    </UserContext.Provider>
   );
 }
 
