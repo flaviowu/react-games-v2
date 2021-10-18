@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import GameCard from '../../../components/GameCard/GameCard'
 import { api } from "../../../util/api/api"
+import './GameList.css'
 
 function GameList() {
   const [games, setGames] = useState([]);
@@ -12,7 +13,7 @@ function GameList() {
             const results = await response.json();
 
             setGames(results)
-            console.log(games)
+            console.log(results)
         }
         
         loadGamesList()

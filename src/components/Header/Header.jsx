@@ -9,7 +9,7 @@ function Header() {
   const history = useHistory();
 
   function handleLogout() {
-    setUser("");
+    setUser();
     history.push("/");
   }
 
