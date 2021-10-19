@@ -8,8 +8,10 @@ import GameList from "./pages/Games/GameList/GameList";
 import { UserContext } from "./context/UserContext";
 import Login from "./pages/Login/login";
 import GameForm from "./pages/Games/GameForm/GameForm";
+import GameFormEdit from "./pages/Games/GameFormEdit/GameFormEdit";
 import AccountView from "./pages/Account/AccountView/AccountView";
 import AccountForm from "./pages/Account/AccountForm/AccountForm";
+import GameView from "./pages/Games/GameView/GameView";
 
 function App() {
   const [user, setUser] = useState();
@@ -27,7 +29,9 @@ function App() {
             <Route exact path="/AccountView" component={AccountView} />
             <Route exact path="/AccountEdit" component={AccountForm} />
             <Route exact path="/AddGame" component={GameForm} />
+            <Route exact path="/GameEdit/:id" component={GameFormEdit} />
             <Route exact path="/Games" component={GameList} />
+            <Route exact path="/Games/:id" component={GameView} />
             <Route exact path="/Login" component={Login} />
           </Switch>
         </div>

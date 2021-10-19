@@ -34,30 +34,26 @@ export const api = {
     }),
 
   //POST
-  buildApiPostRequest: (url, body) => {
+  buildApiPostRequest: (url, body) =>
     fetch(url, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(body),
-    });
-  },
-
+    }),
   //PATCH
-  buildApiPatchRequest: (url, body) => {
+  buildApiPatchRequest: (url, body) =>
     fetch(url, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(body),
-    });
-  },
+    }),
 
-  buildApiDeleteRequest: (url) => {
+  buildApiDeleteRequest: (url) =>
     fetch(url, {
       method: "DELETE",
-    });
-  },
+    }),
 };
