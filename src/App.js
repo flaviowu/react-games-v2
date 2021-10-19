@@ -26,7 +26,7 @@ function App() {
         <div className="body">
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route exact path="/AccountView" component={AccountView} />
+            <Route exact path="/AccountView/:id" component={AccountView} />
             <Route exact path="/AccountEdit" component={AccountForm} />
             <Route exact path="/AddGame" component={GameForm} />
             <Route exact path="/GameEdit/:id" component={GameFormEdit} />

@@ -1,0 +1,33 @@
+.profile-card {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 25rem;
+    height: 4rem;
+    border-radius: 5px;
+    border: 1px solid black;
+
+    &-img{
+        padding: 0;
+
+        img{
+            height: 4rem;
+            border-radius: 5px;
+        }
+    }
+
+    // &-title{
+    //     margin: 0 0 0 3rem;
+    // }
+
+    &-buttons {
+        display: flex;
+        flex-direction: column;
+        button {
+            margin: .1rem 0 .1rem 0;
+            background-color: none;
+            border-radius: 0;
+        }
+    }
+}

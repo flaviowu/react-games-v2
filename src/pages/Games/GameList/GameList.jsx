@@ -13,7 +13,6 @@ function GameList() {
             const results = await response.json();
 
             setGames(results)
-            console.log(results)
         }
         
         loadGamesList()

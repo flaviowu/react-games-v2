@@ -1,28 +1,44 @@
-import React, { useEffect, useState, useContext } from "react";
-import { UserContext } from "../../../context/UserContext";
+import React, { useEffect, useState } from "react";
+import ProfileCard from "../../../components/ProfileCard/ProfileCard";
+import { api } from "../../../util/api/api";
+import "./AccountView.css";
 
-function AccountView() {
-  const { user, setUser } = useContext(UserContext);
+function AccountView(props) {
+  const id = props.match.params.id;
+  const [user, setUser] = useState();
 
   useEffect(() => {
-    console.log(user);
-  }, []);
+    const loadAccount = async () => {
+      const response = await api.buildApiGetRequest(api.readAccountByIdUrl(id));
+      const result = await response.json();
+      setUser(result);
+      console.log(result);
+    };
+    loadAccount();
+  }, [id]);
 
-  return (
-    <div>
-      {user ? (
-        <>
-          <h2>Página Usuário</h2>
-          <h4>{user.name}</h4>
-          <h4>{user.lastname}</h4>
-        </>
-      ) : (
-        <>
-          <h2>Não há Usuário Logado</h2>
-        </>
-      )}
-    </div>
-  );
+  if (user) {
+    return (
+      <div>
+        <h3>
+          {user.name} {user.lastname}
+        </h3>
+        <h4>E-mail: {user.email}</h4>
+        <h4>Perfis Cadastrados:</h4>
+        <div className="account-profiles">
+          {user.profiles.map((profile) => (
+            <ProfileCard profile={profile} />
+          ))}
+        </div>
+      </div>
+    );
+  } else {
+    return (
+      <div>
+        <h3>não há usuário</h3>
+      </div>
+    );
+  }
 }
 
 export default AccountView;
