@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Modal, Box } from "@material-ui/core";
+import { UserContext } from "../../context/UserContext";
 import "./Home.css";
 
 function Home() {
+  const { user, setUser, profile, setProfile, isLogged, setIsLogged} = useContext(UserContext)
   //Modal - inicio
   const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
+  const handleOpen = () =>   setOpen(true);
   const handleClose = () => setOpen(false);
   //Moodal - fim
 
@@ -15,6 +17,8 @@ function Home() {
       <button type="button" onClick={() => handleOpen(!open)}>
         Open Modal
       </button>
+      {(user)? <p>{user.name}</p> : <></>}
+
 
       <Modal
         open={open}
@@ -26,6 +30,7 @@ function Home() {
           <div id="modal-mensagem">
             <h4>Modal Aqui</h4>
             <p>Tem Certeza?</p>
+            
           </div>
         </Box>
       </Modal>

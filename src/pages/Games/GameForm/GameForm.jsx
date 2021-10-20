@@ -7,7 +7,7 @@ function GameForm() {
 
   useEffect(() => {
     const loadGenres = async () => {
-      const response = await api.buildApiGetRequest(api.readAllGenresUrl());
+      const response = await api.buildApiGetRequest(api.readAllGenresUrl(), true);
       const results = await response.json();
       setGenres(results);
     };

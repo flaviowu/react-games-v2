@@ -1,5 +1,11 @@
+import { JwtHandler } from "../JwtHandler/JwtHandler";
+
 export const api = {
   baseUrl: "http://localhost:3001",
+
+  // Endpoint - Login
+
+  loginUrl: () => api.baseUrl + "/login",
 
   //endpoint ref games
   readAllGamesUrl: () => `${api.baseUrl}/game/`,
@@ -27,33 +33,45 @@ export const api = {
 
   // readGenreByIdUrl: (id) => `${api.baseUrl}/genre/${id}`,
 
+  // Auth Header
+
+  authHeader: () => ({
+    Authorization: "Bearer " + JwtHandler.getJwt(),
+  }),
+
   //GET
-  buildApiGetRequest: (url) =>
+  buildApiGetRequest: (url, auth) =>
     fetch(url, {
       method: "GET",
+      headers: auth ? new Headers(api.authHeader()) : undefined,
     }),
 
   //POST
-  buildApiPostRequest: (url, body) =>
+  buildApiPostRequest: (url, body, auth) =>
     fetch(url, {
       method: "POST",
-      headers: {
+      headers: new Headers({
         "Content-Type": "application/json",
-      },
-      body: JSON.stringify(body),
-    }),
-  //PATCH
-  buildApiPatchRequest: (url, body) =>
-    fetch(url, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
+        ...(auth ? api.authHeader() : {}),
+      }),
       body: JSON.stringify(body),
     }),
 
-  buildApiDeleteRequest: (url) =>
+  //PATCH
+  buildApiPatchRequest: (url, body, auth) =>
+    fetch(url, {
+      method: "PATCH",
+      headers: new Headers({
+        "Content-Type": "application/json",
+        ...(auth ? api.authHeader() : {}),
+      }),
+      body: JSON.stringify(body),
+    }),
+
+  //DELETE
+  buildApiDeleteRequest: (url, auth) =>
     fetch(url, {
       method: "DELETE",
+      headers: auth ? new Headers(api.authHeader()) : undefined,
     }),
 };

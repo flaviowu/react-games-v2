@@ -16,7 +16,8 @@ function GameCard(props) {
 
     const response = await api.buildApiPatchRequest(
       api.updateAccountUrl(userId),
-      payload
+      payload,
+      true
     );
 
     const body = await response.json();
@@ -33,6 +34,7 @@ function GameCard(props) {
       <Link to={`/Games/${game.id}`}>
         <button type="button">Detalhes</button>
       </Link>
+      <Link to={`/AddGame`}>Home</Link>
     </div>
   );
 }

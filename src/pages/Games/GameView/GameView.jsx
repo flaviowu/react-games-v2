@@ -8,7 +8,7 @@ function GameView(props) {
 
   useEffect(() => {
     const loadGame = async () => {
-      const response = await api.buildApiGetRequest(api.readGameByIdUrl(id));
+      const response = await api.buildApiGetRequest(api.readGameByIdUrl(id), true);
       const results = await response.json();
       console.log(results);
       setGame(results);

@@ -10,7 +10,7 @@ function GameForm(props) {
 
   useEffect(() => {
     const loadGenres = async () => {
-      const response = await api.buildApiGetRequest(api.readAllGenresUrl());
+      const response = await api.buildApiGetRequest(api.readAllGenresUrl(), true);
       const results = await response.json();
       setGenres(results);
     };
@@ -20,7 +20,7 @@ function GameForm(props) {
 
   useEffect(() => {
     const loadGame = async () => {
-      const response = await api.buildApiGetRequest(api.readGameByIdUrl(id));
+      const response = await api.buildApiGetRequest(api.readGameByIdUrl(id), true);
       const results = await response.json();
       console.log(results);
       setGame(results);
@@ -53,7 +53,7 @@ function GameForm(props) {
 
     const response = await api.buildApiPatchRequest(
       api.updateGameUrl(id),
-      payload
+      payload, true
     );
 
     const body = await response.json();

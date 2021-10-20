@@ -8,7 +8,7 @@ function GameList() {
     
     useEffect(() => {
         const loadGamesList = async () => {
-            const response = await api.buildApiGetRequest(api.readAllGamesUrl())
+            const response = await api.buildApiGetRequest(api.readAllGamesUrl(), true)
 
             const results = await response.json();
 
