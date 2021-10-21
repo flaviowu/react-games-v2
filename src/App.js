@@ -18,6 +18,7 @@ import GameFormEdit from "./pages/Games/GameFormEdit/GameFormEdit";
 import AccountView from "./pages/Account/AccountView/AccountView";
 import AccountForm from "./pages/Account/AccountForm/AccountForm";
 import GameView from "./pages/Games/GameView/GameView";
+import FavoriteGamesList from "./pages/Games/FavoriteGamesList/FavoriteGamesList";
 
 //CSS
 import "./App.css";
@@ -68,6 +69,7 @@ function App() {
             <GuardedRoute exact path="/AddGame" component={GameForm} />
             <GuardedRoute exact path="/GameEdit/:id" component={GameFormEdit} />
             <GuardedRoute exact path="/Games" component={GameList} />
+            <GuardedRoute exact path="/FavoriteGames" component={FavoriteGamesList} />
             <GuardedRoute exact path="/Games/:id" component={GameView} />
             <GuardedRoute exact path="/Profile/:id" component={ProfileView} />
           </Switch>

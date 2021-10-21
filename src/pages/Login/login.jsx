@@ -7,7 +7,7 @@ import Button from "@material-ui/core/Button"
 import "./login.css";
 
 function Login(props) {
-  const { isLogged, setIsLogged } =
+  const { setIsLogged } =
     useContext(UserContext);
   const [errorFlag, setErrorFlag] = useState(false);
 

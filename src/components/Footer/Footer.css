@@ -3,12 +3,12 @@
   left: 0;
   bottom: 0;
   width: 100%;
-  background-color: red;
+  background-color: #f0dcdc;
   text-align: center;
 }
 
 .footer p {
-  color: white;
+  color: black;
   font-size: 10px;
 }
 /*# sourceMappingURL=Footer.css.map */

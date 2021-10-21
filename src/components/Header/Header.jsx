@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import "./Header.css";
 import { Link } from "react-router-dom";
 import { UserContext } from "../../context/UserContext";
@@ -9,7 +9,7 @@ import MenuGames from "../MenuGames/MenuGames";
 import Button from "@material-ui/core/Button";
 
 function Header() {
-  const { account, setAccount, profile, setProfile, isLogged, setIsLogged } =
+  const { setAccount, isLogged, setIsLogged } =
     useContext(UserContext);
   const history = useHistory();
 

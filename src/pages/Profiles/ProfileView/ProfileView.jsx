@@ -37,7 +37,6 @@ function ProfileView(props) {
         payload,
         true
       );
-      const results = await response.json();
     };
 
     uploadPatchRequest(payload, id);
@@ -47,7 +46,6 @@ function ProfileView(props) {
   const handleDelete = () => {
     const removeProfile = async (id) => {
       const response = await api.buildApiDeleteRequest(api.deleteProfileUrl(id), true);
-      const results = await response.json();
     };
     removeProfile(id);
     props.history.push(`/AccountView/${profile.accountId}`);

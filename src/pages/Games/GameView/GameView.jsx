@@ -20,15 +20,18 @@ function GameView(props) {
   if (!game) {
     return (
       <div>
-        <h2>Carregando...</h2>
+        <h4>Carregando...</h4>
       </div>
     );
   }
   
   return (
     <div>
-      <h2>Game</h2>
-      <p>{game.title}</p>
+      <h3>{game.title}</h3>
+      <img src={game.cover} alt={`${game.title}'s cover`}/>
+      <p>{game.description}</p>
+      <p><a href={game.trailer} >Trailer</a></p>
+      <p><a href={game.gameplay} >Gameplay</a></p>
       <Link to={`/GameEdit/${id}`}>
         <button type="button">Editar</button>
       </Link>

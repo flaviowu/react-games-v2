@@ -1,24 +1,22 @@
 import React, { useContext } from "react";
-import "./GameCard.css";
 import { UserContext } from "../../context/UserContext";
+import { useHistory } from "react-router-dom"
 import { api } from "../../util/api/api";
-// import { Link } from "react-router-dom";
 import { CircularProgress } from "@material-ui/core";
-import { useHistory } from "react-router-dom";
+import "./FavoriteGameCard.css";
 
 function GameCard(props) {
   const game = props.gameData;
-  const isInFavorite = props.isInFavorite;
   const { account } = useContext(UserContext);
-  const history = useHistory();
+  const history = useHistory()
 
   // useEffect(() => {
   //   console.log(props.isInFavorite + " favorito?");
   // }, []);
 
-  async function handleAddFavGame(accountId, gameId) {
+  async function handleRemoveFavGame(accountId, gameId) {
     const payload = {
-      favoriteGamesId: [+gameId],
+      removeFavoriteGamesId: [+gameId],
     };
     console.log(gameId, accountId);
     console.log(account);
@@ -31,13 +29,14 @@ function GameCard(props) {
 
     const body = await response.json();
     console.log(body);
+    
   }
 
-  function handleGoGameView(gameId) {
-    history.push(`/Games/${gameId}`);
+  function handleGoGameView(gameId){
+    history.push(`/Games/${gameId}`)
   }
 
-  if (game === undefined) {
+  if (!game) {
     return <CircularProgress />;
   }
 
@@ -47,10 +46,9 @@ function GameCard(props) {
       <img src={game.cover} alt={game.title} />
       <button
         type="button"
-        onClick={() => handleAddFavGame(account.id, game.id)}
-        disabled={isInFavorite}
+        onClick={() => handleRemoveFavGame(account.id, game.id)}
       >
-        Favoritar
+        Remover
       </button>
       <button type="button" onClick={() => handleGoGameView(game.id)}>
         Detalhes

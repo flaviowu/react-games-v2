@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import { UserContext } from "../../context/UserContext";
 import { Link } from "react-router-dom";
 import "./Home.css";
 // import { api } from "../../util/api/api";
 
 function Home() {
-  const { account, setAccount, isLogged, setIsLogged } =
+  const { isLogged } =
     useContext(UserContext);
 
   // useEffect(() => {
@@ -22,7 +22,7 @@ function Home() {
 
   return (
     <div className="home">
-      <h2>Página Home</h2>
+      <img src="https://i.kym-cdn.com/photos/images/original/001/792/665/5cb.png" alt="Polystattion logo"/>
       {isLogged ? (
         <></>
       ) : (

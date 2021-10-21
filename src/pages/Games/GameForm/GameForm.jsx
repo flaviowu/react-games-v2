@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { api } from "../../../util/api/api";
+import { useHistory } from "react-router-dom";
 
 function GameForm() {
-
   const [genres, setGenres] = useState([]);
+  const history = useHistory()
 
   useEffect(() => {
     const loadGenres = async () => {
-      const response = await api.buildApiGetRequest(api.readAllGenresUrl(), true);
+      const response = await api.buildApiGetRequest(
+        api.readAllGenresUrl(),
+        true
+      );
       const results = await response.json();
       setGenres(results);
     };
@@ -35,13 +39,17 @@ function GameForm() {
 
     const response = await api.buildApiPostRequest(
       api.createGameUrl(),
-      payload
+      payload,
+      true
     );
 
     const body = await response.json();
     console.log(body);
-    
-    return;
+
+    if (response.statusCode === 201) {
+      history.push("/Games")
+    }
+
   }
 
   return (
