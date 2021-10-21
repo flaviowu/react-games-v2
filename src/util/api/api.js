@@ -1,8 +1,8 @@
 import { JwtHandler } from "../JwtHandler/JwtHandler";
 
 export const api = {
-  baseUrl: "http://localhost:3001",
-  // baseUrl: "http://polystation-server.herokuapp.com",
+  // baseUrl: "http://localhost:3001",
+  baseUrl: "http://polystation-server.herokuapp.com",
 
   // Endpoint - Login
 
