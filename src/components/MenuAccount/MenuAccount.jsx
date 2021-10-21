@@ -6,9 +6,10 @@ import { Link } from "react-router-dom";
 import "./MenuAccount.css";
 
 export default function MenuAccount() {
+
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
-  const [userId, setUserId] = useState(0);
+  const [userId, setUserId] = useState(localStorage.getItem("userId"));
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
