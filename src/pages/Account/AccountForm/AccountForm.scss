@@ -1,14 +1,20 @@
-.accountForm-form {
+.accountForm {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0 0 0;
+
+  .accountForm-form {
     display: flex;
-    flex-direction:column;
-    max-width: 45rem; 
 
+    flex-direction: column;
     .accountForm-input {
-        display: flex;
+      display: flex;
+      flex-direction: column;
+      margin: .5rem 0 0 0;
 
-        label {
-            width: 15rem;
-        }
-        
+      label {
+        width: 15rem;
+      }
     }
+  }
 }

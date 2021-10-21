@@ -12,4 +12,9 @@
 .gameCard img {
   height: 50%;
 }
+
+.gameCard button a {
+  text-decoration: none;
+  color: black;
+}
 /*# sourceMappingURL=GameCard.css.map */

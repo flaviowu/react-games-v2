@@ -1,4 +1,14 @@
-.accountForm-form {
+.accountForm {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 2rem 0 0 0;
+}
+
+.accountForm .accountForm-form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -6,16 +16,20 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  max-width: 45rem;
 }
 
-.accountForm-form .accountForm-input {
+.accountForm .accountForm-form .accountForm-input {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: .5rem 0 0 0;
 }
 
-.accountForm-form .accountForm-input label {
+.accountForm .accountForm-form .accountForm-input label {
   width: 15rem;
 }
 /*# sourceMappingURL=AccountForm.css.map */

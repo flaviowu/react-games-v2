@@ -2,6 +2,7 @@ import { JwtHandler } from "../JwtHandler/JwtHandler";
 
 export const api = {
   baseUrl: "http://localhost:3001",
+  // baseUrl: "http://polystation-server.herokuapp.com",
 
   // Endpoint - Login
 
@@ -26,6 +27,15 @@ export const api = {
   updateAccountUrl: (id) => `${api.baseUrl}/account/${id}`,
 
   deleteAccountUrl: (id) => `${api.baseUrl}/account/${id}`,
+
+  //endpoint Profiles
+  readProfileByIdUrl: (id) => `${api.baseUrl}/profile/${id}`,
+
+  createProfileUrl: () => `${api.baseUrl}/profile/`,
+
+  updateProfileUrl: (id) => `${api.baseUrl}/profile/${id}`,
+
+  deleteProfileUrl: (id) => `${api.baseUrl}/profile/${id}`,
 
   //endpoint ref generos de jogos
 

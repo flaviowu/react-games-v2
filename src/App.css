@@ -1,5 +1,16 @@
 .App {
+  display: flex;
+  flex-direction: column;
   text-align: center;
-
+  align-content: center;
+  width: 100vw;
+  height: 100vh;
 }
 
+a {
+  text-decoration: none;
+}
+
+a:visited {
+  color: blue;
+}

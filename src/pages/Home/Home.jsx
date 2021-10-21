@@ -1,39 +1,40 @@
-import React, { useState, useContext } from "react";
-import { Modal, Box } from "@material-ui/core";
+import React, { useState, useEffect, useContext } from "react";
 import { UserContext } from "../../context/UserContext";
+import { Link } from "react-router-dom";
 import "./Home.css";
+// import { api } from "../../util/api/api";
 
 function Home() {
-  const { user, setUser, profile, setProfile, isLogged, setIsLogged} = useContext(UserContext)
-  //Modal - inicio
-  const [open, setOpen] = useState(false);
-  const handleOpen = () =>   setOpen(true);
-  const handleClose = () => setOpen(false);
-  //Moodal - fim
+  const { account, setAccount, isLogged, setIsLogged } =
+    useContext(UserContext);
+
+  // useEffect(() => {
+  //   if (isLogged) {
+  //     const loadAccount = async (id) => {
+  //       const response = await api.buildApiGetRequest(api.readAccountByIdUrl(id), true);
+  //       const accountData = await response.json();
+  //       setAccount(accountData);
+  //       console.log(accountData)
+  //     };
+  //     loadAccount(account);
+  //   }
+  // }, [isLogged]);
 
   return (
     <div className="home">
       <h2>Página Home</h2>
-      <button type="button" onClick={() => handleOpen(!open)}>
-        Open Modal
-      </button>
-      {(user)? <p>{user.name}</p> : <></>}
-
-
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box className="home-modal-box">
-          <div id="modal-mensagem">
-            <h4>Modal Aqui</h4>
-            <p>Tem Certeza?</p>
-            
-          </div>
-        </Box>
-      </Modal>
+      {isLogged ? (
+        <></>
+      ) : (
+        <>
+          <Link to="/Login">
+            <p>Faça Login</p>
+          </Link>
+          <Link to="/AccountCreate">
+            <p>Ou crie uma conta</p>
+          </Link>
+        </>
+      )}
     </div>
   );
 }

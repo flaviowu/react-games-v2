@@ -2,7 +2,7 @@ import React from "react";
 import { api } from "../../../util/api/api";
 import "./AccountForm.css";
 
-function AccountForm() {
+function AccountForm(props) {
   async function handleSubmit(e){
     e.preventDefault();
 
@@ -27,6 +27,10 @@ function AccountForm() {
 
     const results = await response.json();
     console.log(results)
+
+    if (response.status === 201) {
+      props.history.push("/Login")
+    }
 
   }
 
@@ -54,7 +58,7 @@ function AccountForm() {
           <label htmlFor="password1">Digite sua Senha:</label>
           <input type="password" name="password1" />
 
-          <label htmlFor="password2">Digite Novamente:</label>
+          <label htmlFor="password2">Digite a senha novamente:</label>
           <input type="password" name="password2" />
         </div>
         <div className="accountForm-input">

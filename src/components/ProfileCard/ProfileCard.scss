@@ -1,33 +1,46 @@
 .profile-card {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    width: 25rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 300px;
+  border-radius: 5px;
+  border: 1px solid black;
+  border-left: 5px solid black;
+  margin: 0.6rem;
+  transition: 300ms ease-in-out;
+
+  img {
     height: 4rem;
-    border-radius: 5px;
-    border: 1px solid black;
+  }
 
-    &-img{
-        padding: 0;
+  button {
+    margin: 0.1rem 0 0.1rem 0;
+    background-color: none;
+    border-radius: 0;
+  }
+}
 
-        img{
-            height: 4rem;
-            border-radius: 5px;
-        }
+.profile-card:hover {
+  transform: scale(1.1);
+}
+
+.home-modal-box {
+  text-align: center;
+  min-height: 10rem;
+  padding: 1rem;
+
+  .current-image {
+    img {
+      border-radius: 5px;
+      height: 3.5rem;
     }
+  }
 
-    // &-title{
-    //     margin: 0 0 0 3rem;
-    // }
+  input {
+    background-color: gainsboro;
+    border: none;
+    height: 2rem;
+  }
 
-    &-buttons {
-        display: flex;
-        flex-direction: column;
-        button {
-            margin: .1rem 0 .1rem 0;
-            background-color: none;
-            border-radius: 0;
-        }
-    }
 }

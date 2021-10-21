@@ -12,34 +12,44 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 25rem;
-  height: 4rem;
+  min-width: 300px;
   border-radius: 5px;
   border: 1px solid black;
+  border-left: 5px solid black;
+  margin: 0.6rem;
+  -webkit-transition: 300ms ease-in-out;
+  transition: 300ms ease-in-out;
 }
 
-.profile-card-img {
-  padding: 0;
-}
-
-.profile-card-img img {
+.profile-card img {
   height: 4rem;
-  border-radius: 5px;
 }
 
-.profile-card-buttons {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-
-.profile-card-buttons button {
-  margin: .1rem 0 .1rem 0;
+.profile-card button {
+  margin: 0.1rem 0 0.1rem 0;
   background-color: none;
   border-radius: 0;
+}
+
+.profile-card:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+.home-modal-box {
+  text-align: center;
+  min-height: 10rem;
+  padding: 1rem;
+}
+
+.home-modal-box .current-image img {
+  border-radius: 5px;
+  height: 3.5rem;
+}
+
+.home-modal-box input {
+  background-color: gainsboro;
+  border: none;
+  height: 2rem;
 }
 /*# sourceMappingURL=ProfileCard.css.map */

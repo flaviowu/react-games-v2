@@ -3,8 +3,9 @@ import React, { useEffect, useState } from "react";
 import { UserContext } from "./context/UserContext";
 import { Switch, Route } from "react-router-dom";
 import GuardedRoute from "./components/GuardedRoute/GuardedRoute";
-import { api } from "./util/api/api";
+
 import { JwtHandler } from "./util/JwtHandler/JwtHandler";
+import { api } from "./util/api/api";
 
 //Pages
 import Header from "./components/Header/Header";
@@ -20,43 +21,29 @@ import GameView from "./pages/Games/GameView/GameView";
 
 //CSS
 import "./App.css";
+import ProfileView from "./pages/Profiles/ProfileView/ProfileView";
 
 function App() {
-  const [isLogged, setIsLogged] = useState(JwtHandler.isJwtValid());
-  const [user, setUser] = useState();
+  const [isLogged, setIsLogged] = useState(JwtHandler.isJwtValid() || false);
+  const [account, setAccount] = useState();
   const [profile, setProfile] = useState();
 
   useEffect(() => {
-    const handleOnJwtChange = () => {
-      setIsLogged(JwtHandler.isJwtValid());
-    };
-
-    window.addEventListener("onJwtChange", handleOnJwtChange);
-
-    // Função de limpeza
-    return () => {
-      window.removeEventListener("onJwtChange", handleOnJwtChange);
-    };
-  }, []);
-
-  useEffect(() => {
     if (isLogged) {
-      const userId = JwtHandler.getJwtPayload(JwtHandler.getJwt()).sub;
-      const loadUser = async () => {
-        const response = await api.buildApiGetRequest(
-          api.readAccountByIdUrl(userId),
-          true
-        );
-        const body = await response.body;
-        setUser(body);
+      const loadAccount = async (id) => {
+        const response = await api.buildApiGetRequest(api.readAccountByIdUrl(id), true);
+        const accountData = await response.json();
+        setAccount(accountData);
+        console.log(accountData)
       };
-      loadUser();
+      loadAccount(localStorage.getItem("userId"));
     }
+
   }, [isLogged]);
 
   return (
     <UserContext.Provider
-      value={{ user, setUser, profile, setProfile, isLogged, setIsLogged }}
+      value={{ account, setAccount, profile, setProfile, isLogged, setIsLogged }}
     >
       <div className="App">
         <div className="navbar">
@@ -75,13 +62,14 @@ function App() {
             />
             <GuardedRoute
               exact
-              path="/AccountEdit/:id"
+              path="/AccountEdit/"
               component={AccountForm}
             />
             <GuardedRoute exact path="/AddGame" component={GameForm} />
             <GuardedRoute exact path="/GameEdit/:id" component={GameFormEdit} />
             <GuardedRoute exact path="/Games" component={GameList} />
             <GuardedRoute exact path="/Games/:id" component={GameView} />
+            <GuardedRoute exact path="/Profile/:id" component={ProfileView} />
           </Switch>
         </div>
         <Footer />

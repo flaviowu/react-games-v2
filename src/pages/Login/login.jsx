@@ -1,11 +1,15 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 import { UserContext } from "../../context/UserContext";
 import { api } from "../../util/api/api";
-import { JwtHandler } from "../../util/JwtHandler/JwtHandler"
+import { JwtHandler } from "../../util/JwtHandler/JwtHandler";
 import { Link } from "react-router-dom";
+import Button from "@material-ui/core/Button"
+import "./login.css";
 
 function Login(props) {
-  const { isLogged, setIsLogged } = useContext(UserContext)
+  const { isLogged, setIsLogged } =
+    useContext(UserContext);
+  const [errorFlag, setErrorFlag] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,27 +25,27 @@ function Login(props) {
     const body = await response.json();
 
     if (response.status === 200) {
-
       const accessToken = body.accessToken;
 
       localStorage.setItem("JWT", accessToken);
 
       JwtHandler.setJwt(accessToken);
 
-      // console.log({ accessToken });
-      
-      setIsLogged(JwtHandler.isJwtValid());
+      localStorage.setItem("userId", JwtHandler.getJwtPayload(JwtHandler.getJwt()).sub)
 
-      // props.history.push(`/`);
-    
+      setIsLogged(JwtHandler.isJwtValid());
+      setErrorFlag(!JwtHandler.isJwtValid());
+
+      props.history.push(`/`);
     } else {
-      // Error
+      setErrorFlag(!errorFlag);
     }
   };
 
   return (
     <div className="login-form">
       <form name="login" onSubmit={handleSubmit}>
+        <h2>Login</h2>
         <div className="login-inputs">
           <label htmlFor="email">E-mail de login</label>
           <input type="email" name="email" placeholder="Digite seu e-mail" />
@@ -53,12 +57,11 @@ function Login(props) {
           />
         </div>
         <div className="login-button">
-          <button type="submit">Login</button>
+          <Button type="submit">Login</Button>
+          {errorFlag ? <span>Erro no Login</span> : <></>}
         </div>
         <div className="login-account-register">
-          <Link to="/AccountCreate">
-            <span>Criar Conta</span>
-          </Link>
+          <Link to="/AccountCreate">Criar Conta</Link>
         </div>
       </form>
     </div>
